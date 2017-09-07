@@ -1,6 +1,7 @@
 #
 # Copyright (C) 2016 Android Open Source Project
 # Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project SM-G355H by Ih24n
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +16,11 @@
 # limitations under the License.
 #
 
-ifneq ($(filter kanas3g,$(TARGET_DEVICE)),)
-    include $(all-subdir-makefiles)
+ifeq (RECOVERY_VARIANT), twrp)
+ifeq ($(TARGET_DEVICE), kanas3g)
+
+LOCAL_PATH := $(call my-dir)
+include $(call first-makefiles-under, $(LOCAL_PATH))
+
+endif
 endif
